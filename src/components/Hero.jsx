@@ -1,42 +1,128 @@
-import TypeWriter from "./Typewriter";
+import { motion } from "framer-motion";
+// import TypeWriter from "./Typewriter";
+import TextType from "./TextType";
+import Aurora from "./Aurora";
 
+
+
+// Variants for animation
+const slideFromLeft = {
+    hidden: { x: -100, opacity: 0 },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 1.2, ease: "easeOut" }
+    }
+};
+
+const slideFromRight = {
+    hidden: { x: 100, opacity: 0 },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 1.2, ease: "easeOut", delay: 0.3 }
+    }
+};
 
 const Hero = () => {
     return (
         <section
             id="home"
-            className="bg-black text-white mt-[64px] py-16 w-full" // padding top avoids navbar overlap
+            className="relative bg-black text-white mt-[64px] py-12 md:py-20 w-full overflow-hidden"
         >
+            {/* Aurora Background */}
+            <Aurora
+                colorStops={["#1a1a40", "#ff6a00", "#ffb347"]}
+                blend={0.4}
+                amplitude={1.2}
+                speed={0.5}
+            />
+            {/* Minimal animated glow background */}
+            <motion.div
+                className="absolute w-[500px] h-[500px] bg-cyan-400 rounded-full blur-[160px] opacity-10 top-[-100px] left-[10%] -z-10 pointer-events-none"
+                animate={{
+                    x: [0, 50, -50, 0],
+                    y: [0, -30, 30, 0],
+                }}
+                transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
+            />
 
-            <div className="max-w-screen-lg mx-auto px-4 text-center">
-                <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 to-white bg-clip-text text-transparent mb-4">
-                    Saaketh Jella
-                </h1>
+            {/* Main Layout */}
+            <div className="relative z-10  max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between w-full">
 
-                <TypeWriter key="Software Engineer at BNP Paribas" text="Software Engineer at BNP Paribas" />
+                {/* LEFT: Text Section */}
+                <motion.div
+                    variants={slideFromLeft}
+                    initial="hidden"
+                    animate="visible"
+                    className="md:w-1/2 w-full mb-10 md:mb-0 md:pr-8"
+                >
+                    <h1 className="text-4xl md:text-6xl font-bold mb-4 font-serif">Hi, I'm Saaketh</h1>
 
+                    <div className="text-xl md:text-2xl text-gray-300 font-medium mb-6 font-mono">
+                        <TextType
+                            text={["Software Engineer at BNP Paribas"]}
+                            typingSpeed={60}
+                            pauseDuration={4000}
+                            showCursor={true}
+                            cursorCharacter="_"
+                            className="text-xl md:text-2xl text-gray-300 font-medium font-mono"
+                        />
 
+                        {/* <TypeWriter text="Software Engineer at BNP Paribas" /> */}
+                    </div>
 
-                <p className="text-base md:text-lg text-gray-300 mb-10 leading-relaxed">
-                    Detail-oriented Software Engineer with 2+ years of experience in financial automation,
-                    reconciliation tools, and workflow optimization. Passionate about building scalable solutions
-                    that streamline operations and reduce manual effort.
-                </p>
+                    <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-lg font-light font-sans">
+                        Software Engineer at BNP Paribas with over 2 years of experience
+                        specializing in reconciliation workflows using IntelliMatch.
+                        Proficient in SQL & Python. Enthusiastic about CI/CD and DevOps tools.
+                    </p>
 
-                <div className="flex flex-wrap gap-4 justify-center">
-                    <a
-                        href="#contact"
-                        className="px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-semibold rounded hover:bg-cyan-400 hover:text-black transition"
-                    >
-                        Get In Touch
-                    </a>
-                    <a
-                        href="#projects"
-                        className="px-6 py-3 border-2 border-cyan-400 text-cyan-400 font-semibold rounded hover:bg-cyan-400 hover:text-black transition"
-                    >
-                        View My Work
-                    </a>
-                </div>
+                    {/* Buttons */}
+                    <div className="flex gap-4 mt-8 font-mono">
+                        <a
+                            href="#contact"
+                            className="px-6 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-black transition duration-300 shadow-lg hover:shadow-white/25"
+                        >
+                            Get In Touch
+                        </a>
+                        <a
+                            href="#projects"
+                            className="px-6 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-black transition duration-300 shadow-lg hover:shadow-white/25"
+                        >
+                            View My Work
+                        </a>
+                    </div>
+
+                </motion.div>
+
+                {/* RIGHT: Image Section */}
+                <motion.div
+                    variants={slideFromRight}
+                    initial="hidden"
+                    animate="visible"
+                    className="md:w-1/2 w-full flex justify-center md:justify-end"
+                >
+                    <div className="relative">
+                        <img
+                            src="/src/assets/Saaketh_profile_pic.JPG"
+                            alt="Saaketh"
+                            className="w-80 h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover object-center shadow-2xl rounded-full"
+                            style={{
+                                filter: 'contrast(1.05) saturate(1.1)',
+                                imageRendering: 'auto',
+                                WebkitBackfaceVisibility: 'hidden',
+                                backfaceVisibility: 'hidden',
+                                transform: 'translateZ(0)',
+                            }}
+                        />
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 to-blue-500/10 blur-xl -z-10" />
+                    </div>
+                </motion.div>
             </div>
         </section>
     );
