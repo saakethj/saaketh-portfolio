@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 // import TypeWriter from "./Typewriter";
 import TextType from "./TextType";
 import Aurora from "./Aurora";
+import GradientText from "./GradientText";
 
 
 
@@ -61,7 +62,16 @@ const Hero = () => {
                     animate="visible"
                     className="md:w-1/2 w-full mb-10 md:mb-0 md:pr-8"
                 >
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 font-serif">Hi, I'm Saaketh</h1>
+                    <GradientText
+                        colors={["#ffffffff", "#375d7fff", "#785e42ff", "#ffffffff"]}
+                        animationSpeed={7}
+                        showBorder={false}
+                        className="text-4xl md:text-6xl font-bold"
+                    >
+                        <span style={{ fontWeight: 800, fontFamily: "Inter, sans-serif" }}>
+                            Hi, I'm Saaketh
+                        </span>
+                    </GradientText>
 
                     <div className="text-xl md:text-2xl text-gray-300 font-medium mb-6 font-mono">
                         <TextType
@@ -76,23 +86,34 @@ const Hero = () => {
                         {/* <TypeWriter text="Software Engineer at BNP Paribas" /> */}
                     </div>
 
-                    <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-lg font-light font-sans">
-                        Software Engineer at BNP Paribas with over 2 years of experience
-                        specializing in reconciliation workflows using IntelliMatch.
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg font-medium"
+                       style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, letterSpacing: "0.025em" }}>
+                        Software Engineer at BNP Paribas with over 2 years of experience 
+                        specializing in reconciliation workflows using IntelliMatch. 
                         Proficient in SQL & Python. Enthusiastic about CI/CD and DevOps tools.
                     </p>
 
                     {/* Buttons */}
-                    <div className="flex gap-4 mt-8 font-mono">
+                    <div className="flex gap-4 mt-8" style={{ fontFamily: "Inter, sans-serif" }}>
                         <a
                             href="#contact"
-                            className="px-6 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-black transition duration-300 shadow-lg hover:shadow-white/25"
+                            className="px-6 py-3 border-2 border-blue-500 text-blue-400 font-medium rounded-lg hover:bg-blue-500/20 hover:text-blue-300 hover:border-blue-400 transition duration-300 shadow-lg hover:shadow-blue-500/25"
+                            style={{ 
+                                fontFamily: "Inter, sans-serif", 
+                                fontWeight: 500,
+                                textDecoration: 'none'
+                            }}
                         >
                             Get In Touch
                         </a>
                         <a
                             href="#projects"
-                            className="px-6 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-black transition duration-300 shadow-lg hover:shadow-white/25"
+                            className="px-6 py-3 border-2 border-orange-500 text-orange-400 font-medium rounded-lg hover:bg-orange-500/20 hover:text-orange-300 hover:border-orange-400 transition duration-300 shadow-lg hover:shadow-orange-500/25"
+                            style={{ 
+                                fontFamily: "Inter, sans-serif", 
+                                fontWeight: 500,
+                                textDecoration: 'none'
+                            }}
                         >
                             View My Work
                         </a>
