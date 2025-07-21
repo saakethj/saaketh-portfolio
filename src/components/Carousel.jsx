@@ -144,6 +144,45 @@ export default function Carousel({
       },
     };
 
+  const renderIcon = (item) => {
+    // If item has an image, render the image
+    if (item.image) {
+      return (
+        <div className="h-[40px] w-[40px] rounded-full overflow-hidden bg-gray-700 flex items-center justify-center">
+          <img 
+            src={item.image} 
+            alt={item.title}
+            className="h-full w-full object-cover"
+            onError={(e) => {
+              // Fallback to text icon if image fails to load
+              e.target.style.display = 'none';
+              e.target.nextElementSibling.style.display = 'flex';
+            }}
+          />
+          <div className="h-full w-full hidden items-center justify-center text-white text-lg font-bold bg-gray-600">
+            {item.title.charAt(0)}
+          </div>
+        </div>
+      );
+    }
+    
+    // If item has an emoji icon (string)
+    if (typeof item.icon === 'string') {
+      return (
+        <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#060010] text-2xl">
+          {item.icon}
+        </span>
+      );
+    }
+    
+    // Default React icon component
+    return (
+      <span className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#060010]">
+        {item.icon}
+      </span>
+    );
+  };
+
   return (
     <div
       ref={containerRef}
@@ -190,22 +229,25 @@ export default function Carousel({
                 } overflow-hidden cursor-grab active:cursor-grabbing`}
               style={{
                 width: itemWidth,
-                height: round ? itemWidth : "100%",
+                height: round ? itemWidth : "auto",
+                minHeight: round ? "auto" : "200px",
                 rotateY: rotateY,
                 ...(round && { borderRadius: "50%" }),
               }}
               transition={effectiveTransition}
             >
-              <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-                <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
-                  {item.icon}
-                </span>
+              <div className={`${round ? "p-0 m-0" : "mb-4 p-5"} ${round ? "" : "flex-shrink-0"}`}>
+                {renderIcon(item)}
               </div>
-              <div className="p-5">
-                <div className="mb-1 font-black text-lg text-white">
-                  {item.title}
+              <div className={`${round ? "p-4" : "p-5 pt-0"} ${round ? "" : "flex-1 flex flex-col justify-between"}`}>
+                <div>
+                  <div className="mb-2 font-black text-lg text-white">
+                    {item.title}
+                  </div>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <p className="text-sm text-white">{item.description}</p>
               </div>
             </motion.div>
           );
