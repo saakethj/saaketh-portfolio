@@ -6,6 +6,7 @@ html, body, #root {
   width: 100vw;
   overflow-x: hidden;
   background-color: black;
+  scroll-behavior: smooth;
 }
 
 h1 {
