@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
+import ExperienceAnimatedBackground from './ExperienceAnimatedBackground'; // Adjust path as needed
 
 const experiences = [
   {
@@ -99,7 +100,7 @@ const Experience = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-white/3 via-transparent to-transparent rounded-2xl pointer-events-none"></div>
           
           {/* Backdrop blur - lighter on mobile */}
-          <div className="absolute inset-0 backdrop-blur-sm md:backdrop-blur-md rounded-2xl pointer-events-none"></div>
+<div className="absolute inset-0 backdrop-blur-md md:backdrop-blur-lg rounded-2xl pointer-events-none"></div>
           
           {/* Subtle hover glow */}
           <div className="absolute inset-0 bg-gradient-to-br from-orange-400/2 to-purple-500/2 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -143,14 +144,8 @@ const Experience = () => {
       className="relative bg-black text-white py-20 px-6 md:px-12 min-h-screen"
       style={{ fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
     >
-      {/* Background with subtle pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-purple-500/5"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,165,0,0.1) 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }}></div>
-      </div>
+      {/* Animated Background */}
+<ExperienceAnimatedBackground className="z-0" />
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
