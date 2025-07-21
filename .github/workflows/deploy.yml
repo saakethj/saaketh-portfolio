@@ -40,7 +40,12 @@ jobs:
         run: npm ci
         
       - name: Build project
-        run: npm run build
+        run: |
+          npm run build
+          # Add .nojekyll file to prevent Jekyll processing
+          touch ./dist/.nojekyll
+          # List files to verify build
+          ls -la ./dist/
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
