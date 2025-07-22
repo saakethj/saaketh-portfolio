@@ -56,7 +56,7 @@ const Experience = () => {
     style.textContent = `
       @font-face {
         font-family: 'SF Pro Display';
-        src: url('./src/assets/fonts/SF-Pro-Display-Medium.otf') format('opentype');
+        src: url('${import.meta.env.BASE_URL}fonts/SF-Pro-Display-Medium.otf') format('opentype');
         font-weight: 500;
         font-display: swap;
       }
