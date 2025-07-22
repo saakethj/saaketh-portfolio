@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         {/* Logo or Name */}
         <a 
-          href="/"
+          href="/saaketh-portfolio"
           className="tracking-wide"
           style={{
             fontSize: '1.75rem',
