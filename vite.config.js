@@ -4,10 +4,10 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/saaketh-portfolio/',
   plugins: [
     tailwindcss(),
     react()
   ],
+  base: process.env.VITE_BASE_PATH || "/saaketh-portfolio"
   // Use different base paths for development vs production
 })
