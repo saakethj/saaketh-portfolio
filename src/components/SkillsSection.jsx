@@ -22,52 +22,56 @@ import {
 } from 'react-icons/fi';
 import SkillsPanel from './SkillsPanel';
 
-// Dynamic skills configuration - easy to modify and expand
+// 🎯 EDIT YOUR SKILLS HERE - Everything is centralized in this config!
 const skillsConfig = {
-  // Main skills that will be displayed
+  // Main skills that will be displayed - ADD/EDIT/REMOVE skills here
   mainSkills: [
     {
       icon: <FiCode />,
       title: 'Programming & Development',
       skills: ['Python', 'Batch Scripting', 'SQL Development', 'JavaScript', 'React.js'],
       color: '#ff6b35',
+      proficiencyLevel: 'Expert' // Beginner, Intermediate, Advanced, Expert, Learning
     },
     {
       icon: <FiDollarSign />,
       title: 'FinTech & Automation',
       skills: ['IntelliMatch', 'Recollector', 'AutoSys', 'Admin Module', 'SWIFT Messages'],
       color: '#00ff88',
+      proficiencyLevel: 'Expert'
     },
     {
       icon: <FiDatabase />,
       title: 'Data & Analytics',
       skills: ['MySQL', 'Power BI', 'Stored Procedures', 'RDL Reporting', 'Data Mining'],
       color: '#4ecdc4',
+      proficiencyLevel: 'Advanced'
     },
     {
       icon: <FiGitBranch />,
       title: 'DevOps & Version Control',
       skills: ['GIT', 'GitHub', 'BitBucket', 'CI/CD Pipelines', 'Docker'],
       color: '#00ffff',
+      proficiencyLevel: 'Advanced'
     },
     {
       icon: <FiZap />,
       title: 'Currently Learning',
       skills: ['DevOps Tools', 'Cloud Technologies', 'Microservices', 'Kubernetes', 'AWS'],
       color: '#ffaa00',
+      proficiencyLevel: 'Learning'
     },
   ],
   
-  // Layout configuration
+  // Layout configuration - Modify these for different layouts
   layout: {
-    preferredPerRow: 5,
-    maxPerRow: 4,
+    maxCardsPerRow: 3, // Maximum cards per row before creating new row
     cardHeight: '400px',
     mobileCardHeight: '300px',
     gap: '16px',
   },
   
-  // Animation settings
+  // Animation settings - Tweak these for different effects
   animation: {
     expandRatio: 2.5,
     transitionDuration: 600,
@@ -95,7 +99,7 @@ const SkillsSection = () => {
     }
   }, []);
 
-  // Load fonts to match experience section
+  // Load fonts to match experience section exactly
   useEffect(() => {
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
@@ -247,32 +251,36 @@ const SkillsSection = () => {
     });
   }
 
-  // Calculate layout based on screen size
+  // Smart layout calculation - no compression, proper rows
   const getLayoutConfig = () => {
     if (isMobile) {
+      // Mobile: 1 card per row
       return {
         skillsPerRow: 1,
-        rows: [mainSkills] // All skills in separate rows on mobile
+        rows: mainSkills.map(skill => [skill]) // Each skill gets its own row
       };
     } else if (windowWidth < 1024) {
-      // Tablet
+      // Tablet: 2 cards per row max
+      const rows = [];
+      for (let i = 0; i < mainSkills.length; i += 2) {
+        rows.push(mainSkills.slice(i, i + 2));
+      }
       return {
         skillsPerRow: 2,
-        rows: [
-          mainSkills.filter((_, i) => i % 2 === 0),
-          mainSkills.filter((_, i) => i % 2 === 1)
-        ]
+        rows: rows
       };
     } else {
-      // Desktop
-      const shouldUseRows = mainSkills.length > layout.preferredPerRow;
-      const skillsPerRow = shouldUseRows ? Math.ceil(mainSkills.length / 2) : mainSkills.length;
+      // Desktop: Use maxCardsPerRow from config
+      const maxPerRow = layout.maxCardsPerRow;
+      const rows = [];
+      
+      for (let i = 0; i < mainSkills.length; i += maxPerRow) {
+        rows.push(mainSkills.slice(i, i + maxPerRow));
+      }
       
       return {
-        skillsPerRow,
-        rows: shouldUseRows 
-          ? [mainSkills.slice(0, skillsPerRow), mainSkills.slice(skillsPerRow)]
-          : [mainSkills]
+        skillsPerRow: maxPerRow,
+        rows: rows
       };
     }
   };
@@ -285,7 +293,7 @@ const SkillsSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.8, delay: 0.2 + (rowIndex * 0.1) }}
-      className={`flex w-full ${isMobile ? 'flex-col space-y-4' : 'gap-4'}`}
+      className={`flex w-full ${isMobile ? 'flex-col space-y-4' : 'gap-4 justify-center'}`}
       style={{ 
         minHeight: isMobile ? 'auto' : layout.cardHeight
       }}
@@ -298,9 +306,9 @@ const SkillsSection = () => {
           viewport={{ once: true }}
           transition={{ 
             duration: 0.5, 
-            delay: (rowIndex * layoutConfig.skillsPerRow + idx) * animation.staggerDelay 
+            delay: (rowIndex * skills.length + idx) * animation.staggerDelay 
           }}
-          className={isMobile ? 'w-full' : 'flex-1'}
+          className={isMobile ? 'w-full' : 'flex-1 max-w-sm'}
           style={{
             minHeight: isMobile ? layout.mobileCardHeight : layout.cardHeight
           }}
@@ -309,6 +317,7 @@ const SkillsSection = () => {
             {...panel} 
             expandRatio={isMobile ? 1 : animation.expandRatio}
             transitionDuration={animation.transitionDuration}
+            proficiencyLevel={panel.proficiencyLevel || 'Expert'}
             isMobile={isMobile}
           />
         </motion.div>
@@ -319,7 +328,7 @@ const SkillsSection = () => {
   return (
     <section 
       id="skills" 
-      className="relative bg-black text-white py-20 px-6 md:px-12 min-h-screen overflow-hidden"
+      className="relative bg-black text-white py-20 px-6 md:px-12 min-h-screen"
       style={{ fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
     >
       {/* Enhanced Animated Background with black top/bottom */}
@@ -435,47 +444,38 @@ const SkillsSection = () => {
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto">
-        {/* Section Title with Better Gradient and Slower Animation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Technical{' '}
-            <motion.span 
-              className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent"
-              animate={{
-                backgroundPosition: ['0% 0%', '100% 0%', '0% 0%']
-              }}
-              transition={{
-                duration: 6, // Increased duration for slower animation
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1 // Added delay
-              }}
-              style={{
-                backgroundSize: '200% 100%'
-              }}
-            >
-              Skills
-            </motion.span>
-          </h2>
-          <p className="text-white/70 text-lg font-medium">
-            {isMobile 
-              ? 'Explore my technical expertise across different domains'
-              : layoutConfig.rows.length > 1 
-                ? 'Explore my technical expertise across different domains' 
-                : 'Hover over each panel to explore my technical expertise'
-            }
-          </p>
-        </motion.div>
+      {/* Content - MATCHING EXPERIENCE SECTION EXACTLY */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
+          Technical{' '}
+          <motion.span 
+            className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent"
+            animate={{
+              backgroundPosition: ['0% 0%', '100% 0%', '0% 0%']
+            }}
+            transition={{
+              duration: 6, // Increased duration for slower animation
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1 // Added delay
+            }}
+            style={{
+              backgroundSize: '200% 100%'
+            }}
+          >
+            Skills
+          </motion.span>
+        </h2>
+      </motion.div>
 
-        {/* Skills Container */}
+      {/* Skills Container - MATCHING EXPERIENCE MAX-WIDTH */}
+      <div className="relative max-w-5xl mx-auto">
         <div className="skills-container space-y-6">
           {layoutConfig.rows.map((skills, rowIndex) => (
             <SkillsRow key={rowIndex} skills={skills} rowIndex={rowIndex} />
@@ -521,7 +521,7 @@ const SkillsSection = () => {
           className="text-center mt-8"
         >
           <p className="text-white/50 text-sm font-medium">
-            {mainSkills.length} Core Technology Areas
+            {mainSkills.length} Core Technology Areas • {layoutConfig.rows.length} {layoutConfig.rows.length === 1 ? 'Row' : 'Rows'}
           </p>
         </motion.div>
       </div>
