@@ -1,7 +1,8 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import AboutText from "./components/About";
-import Experience from "./components/Experience"
+import Experience from "./components/Experience";
+import SkillsSection from './components/SkillsSection'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Hero />
       <AboutText />
       <Experience />
+      <SkillsSection/>
     </div>
   );
 }
