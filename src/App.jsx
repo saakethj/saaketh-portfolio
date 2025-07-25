@@ -4,6 +4,7 @@ import AboutText from "./components/About";
 import Experience from "./components/Experience";
 import SkillsSection from './components/SkillsSection';
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import ProjectsSection from "./components/Projects";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <AboutText />
       <Experience />
       <SkillsSection/>
+      <ProjectsSection />
     </div>
   );
 }
