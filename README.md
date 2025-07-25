@@ -2,11 +2,11 @@
 
 A modern, responsive portfolio website showcasing my work, skills, and professional journey. Built with cutting-edge web technologies for optimal performance and user experience.
 
-![Portfolio Preview](https://via.placeholder.com/800x400?text=Portfolio+Preview)
+![Portfolio Preview](https://github.com/saakethj/saaketh-portfolio/blob/master/public/images/Preview.png)
 
 ## 🚀 Live Demo
 
-🔗 **[View Live Site](https://saakethj.github.io/saaketh-portfolio/)**
+🔗 **[View Live Site](https://www.saakethj.in/)**
 
 ## ✨ Features
 
