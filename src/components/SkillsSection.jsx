@@ -29,48 +29,49 @@ const skillsConfig = {
     {
       icon: <FiCode />,
       title: 'Programming & Development',
-      skills: ['Python', 'Batch Scripting', 'SQL Development', 'JavaScript', 'React.js'],
+      skills: ['Python', 'Batch Scripting', 'SQL Development'],
       color: '#ff6b35',
-      proficiencyLevel: 'Expert' // Beginner, Intermediate, Advanced, Expert, Learning
+      proficiencyLevel: 'Intermediate' // Beginner, Intermediate, Advanced, Expert, Learning
     },
     {
       icon: <FiDollarSign />,
       title: 'FinTech & Automation',
-      skills: ['IntelliMatch', 'Recollector', 'AutoSys', 'Admin Module', 'SWIFT Messages'],
+      skills: ['IntelliMatch', 'Recollector', 'AutoSys', 'Admin', 'Reconciliation'],
       color: '#00ff88',
       proficiencyLevel: 'Expert'
     },
     {
       icon: <FiDatabase />,
       title: 'Data & Analytics',
-      skills: ['MySQL', 'Power BI', 'Stored Procedures', 'RDL Reporting', 'Data Mining'],
+      skills: ['MySQL', 'Power BI', 'RDL Reporting', 'MongoDB'],
       color: '#4ecdc4',
-      proficiencyLevel: 'Advanced'
+      proficiencyLevel: 'Intermediate'
     },
     {
       icon: <FiGitBranch />,
       title: 'DevOps & Version Control',
-      skills: ['GIT', 'GitHub', 'BitBucket', 'CI/CD Pipelines', 'Docker'],
+      skills: ['GIT', 'GitHub', 'BitBucket', 'CI/CD Pipelines'],
       color: '#00ffff',
-      proficiencyLevel: 'Advanced'
+      proficiencyLevel: 'Beginner'
     },
     {
       icon: <FiZap />,
       title: 'Currently Learning',
-      skills: ['DevOps Tools', 'Cloud Technologies', 'Microservices', 'Kubernetes', 'AWS'],
+      skills: ['DevOps Tools', 'Kubernetes', 'Terraform', 'Ansible'],
       color: '#ffaa00',
       proficiencyLevel: 'Learning'
     },
   ],
-  
+
   // Layout configuration - Modify these for different layouts
   layout: {
     maxCardsPerRow: 3, // Maximum cards per row before creating new row
     cardHeight: '400px',
-    mobileCardHeight: '300px',
-    gap: '16px',
+    mobileCardHeight: '350px',
+    gap: '20px', // Consistent gap
+    maxCardWidth: '350px', // Fixed width for consistent cards
   },
-  
+
   // Animation settings - Tweak these for different effects
   animation: {
     expandRatio: 2.5,
@@ -83,7 +84,7 @@ const SkillsSection = () => {
   const [windowWidth, setWindowWidth] = useState(1200);
   const [isMobile, setIsMobile] = useState(false);
   const { mainSkills, layout, animation } = skillsConfig;
-  
+
   // Handle window resize for responsive design
   useEffect(() => {
     const handleResize = () => {
@@ -91,7 +92,7 @@ const SkillsSection = () => {
       setWindowWidth(width);
       setIsMobile(width < 768);
     };
-    
+
     if (typeof window !== 'undefined') {
       handleResize();
       window.addEventListener('resize', handleResize);
@@ -105,7 +106,7 @@ const SkillsSection = () => {
     link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
-    
+
     const style = document.createElement('style');
     style.textContent = `
       @font-face {
@@ -125,7 +126,7 @@ const SkillsSection = () => {
       medium: 'w-2 h-2',
       large: 'w-3 h-3'
     };
-    
+
     return (
       <motion.div
         className="absolute pointer-events-none"
@@ -143,9 +144,9 @@ const SkillsSection = () => {
           ease: "easeInOut",
         }}
       >
-        <div 
+        <div
           className={`${sizeMap[size]} rounded-full shadow-lg backdrop-blur-sm`}
-          style={{ 
+          style={{
             backgroundColor: `${color}60`,
             boxShadow: `0 0 10px ${color}40`
           }}
@@ -210,14 +211,14 @@ const SkillsSection = () => {
   const particles = [];
   const backgroundIcons = [];
   const circuitPatterns = [];
-  
+
   // More diverse tech icons
   const techIcons = [
-    <FiCode />, <FiDatabase />, <FiGitBranch />, <FiSettings />, <FiBarChart2 />, 
+    <FiCode />, <FiDatabase />, <FiGitBranch />, <FiSettings />, <FiBarChart2 />,
     <FiCpu />, <FiServer />, <FiMonitor />, <FiHardDrive />, <FiWifi />, <FiLayers />,
     <FiCloud />, <FiShield />, <FiTool />, <FiTarget />
   ];
-  
+
   for (let i = 0; i < 25; i++) {
     const skill = mainSkills[i % mainSkills.length];
     particles.push({
@@ -228,7 +229,7 @@ const SkillsSection = () => {
       size: ['small', 'medium', 'large'][i % 3],
     });
   }
-  
+
   for (let i = 0; i < 15; i++) {
     const skill = mainSkills[i % mainSkills.length];
     backgroundIcons.push({
@@ -251,16 +252,16 @@ const SkillsSection = () => {
     });
   }
 
-  // Smart layout calculation - no compression, proper rows
+  // Smart layout calculation - proper responsive layout
   const getLayoutConfig = () => {
     if (isMobile) {
-      // Mobile: 1 card per row
+      // Mobile: 1 card per row, full width
       return {
         skillsPerRow: 1,
-        rows: mainSkills.map(skill => [skill]) // Each skill gets its own row
+        rows: mainSkills.map(skill => [skill])
       };
     } else if (windowWidth < 1024) {
-      // Tablet: 2 cards per row max
+      // Tablet: 2 cards per row
       const rows = [];
       for (let i = 0; i < mainSkills.length; i += 2) {
         rows.push(mainSkills.slice(i, i + 2));
@@ -273,11 +274,11 @@ const SkillsSection = () => {
       // Desktop: Use maxCardsPerRow from config
       const maxPerRow = layout.maxCardsPerRow;
       const rows = [];
-      
+
       for (let i = 0; i < mainSkills.length; i += maxPerRow) {
         rows.push(mainSkills.slice(i, i + maxPerRow));
       }
-      
+
       return {
         skillsPerRow: maxPerRow,
         rows: rows
@@ -293,9 +294,13 @@ const SkillsSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.8, delay: 0.2 + (rowIndex * 0.1) }}
-      className={`flex w-full ${isMobile ? 'flex-col space-y-4' : 'gap-4 justify-center'}`}
-      style={{ 
-        minHeight: isMobile ? 'auto' : layout.cardHeight
+      className={`w-full ${isMobile
+          ? 'flex flex-col gap-6'
+          : 'flex justify-center items-start'
+        }`}
+      style={{
+        gap: isMobile ? undefined : layout.gap,
+        minHeight: 'auto'
       }}
     >
       {skills.map((panel, idx) => (
@@ -304,17 +309,21 @@ const SkillsSection = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ 
-            duration: 0.5, 
-            delay: (rowIndex * skills.length + idx) * animation.staggerDelay 
+          transition={{
+            duration: 0.5,
+            delay: (rowIndex * skills.length + idx) * animation.staggerDelay
           }}
-          className={isMobile ? 'w-full' : 'flex-1 max-w-sm'}
+          className={isMobile ? 'w-full' : ''}
           style={{
-            minHeight: isMobile ? layout.mobileCardHeight : layout.cardHeight
+            minHeight: isMobile ? layout.mobileCardHeight : layout.cardHeight,
+            maxHeight: isMobile ? layout.mobileCardHeight : layout.cardHeight,
+            width: isMobile ? '100%' : layout.maxCardWidth,
+            maxWidth: isMobile ? '100%' : layout.maxCardWidth,
+            flex: 'none' // Prevent flex grow/shrink issues
           }}
         >
-          <SkillsPanel 
-            {...panel} 
+          <SkillsPanel
+            {...panel}
             expandRatio={isMobile ? 1 : animation.expandRatio}
             transitionDuration={animation.transitionDuration}
             proficiencyLevel={panel.proficiencyLevel || 'Expert'}
@@ -326,9 +335,9 @@ const SkillsSection = () => {
   );
 
   return (
-    <section 
-      id="skills" 
-      className="relative bg-black text-white py-20 px-6 md:px-12 min-h-screen"
+    <section
+      id="skills"
+      className="relative bg-black text-white py-20 px-6 md:px-12 lg:px-20 w-full overflow-hidden min-h-screen"
       style={{ fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
     >
       {/* Enhanced Animated Background with black top/bottom */}
@@ -336,7 +345,7 @@ const SkillsSection = () => {
         {/* Black gradient at top and bottom, tech effects in middle */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/10 to-transparent" />
-        
+
         {/* Enhanced center tech glow effect - positioned in middle third */}
         <motion.div
           className="absolute inset-0"
@@ -391,7 +400,7 @@ const SkillsSection = () => {
         ))}
 
         {/* Enhanced grid pattern with better tech feel */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0"
           animate={{ opacity: [0.08, 0.15, 0.08] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -454,16 +463,16 @@ const SkillsSection = () => {
       >
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center">
           Technical{' '}
-          <motion.span 
+          <motion.span
             className="bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 bg-clip-text text-transparent"
             animate={{
               backgroundPosition: ['0% 0%', '100% 0%', '0% 0%']
             }}
             transition={{
-              duration: 6, // Increased duration for slower animation
+              duration: 6,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: 1 // Added delay
+              delay: 1
             }}
             style={{
               backgroundSize: '200% 100%'
@@ -474,8 +483,8 @@ const SkillsSection = () => {
         </h2>
       </motion.div>
 
-      {/* Skills Container - MATCHING EXPERIENCE MAX-WIDTH */}
-      <div className="relative max-w-5xl mx-auto">
+      {/* Skills Container - EXACTLY MATCHING ABOUT SECTION STRUCTURE */}
+      <div className="max-w-7xl mx-auto">
         <div className="skills-container space-y-6">
           {layoutConfig.rows.map((skills, rowIndex) => (
             <SkillsRow key={rowIndex} skills={skills} rowIndex={rowIndex} />
@@ -494,7 +503,7 @@ const SkillsSection = () => {
             <motion.div
               key={index}
               className="w-2 h-2 rounded-full shadow-lg"
-              style={{ 
+              style={{
                 backgroundColor: `${skill.color}80`,
                 boxShadow: `0 0 8px ${skill.color}40`
               }}
