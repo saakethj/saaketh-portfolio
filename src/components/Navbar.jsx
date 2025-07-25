@@ -82,6 +82,22 @@ const Navbar = () => {
           </li>
           <li>
             <a
+              href="#Projects"
+              className="transition-all duration-300 hover:scale-105"
+              style={{
+                fontSize: '1rem',
+                fontWeight: '600',
+                color: '#f3f4f6',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#fb923c'}
+              onMouseLeave={(e) => e.target.style.color = '#f3f4f6'}
+            >
+              Projects
+            </a>
+          </li>
+          <li>
+            <a
               href="#contact"
               className="transition-all duration-300 hover:scale-105"
               style={{
@@ -94,22 +110,6 @@ const Navbar = () => {
               onMouseLeave={(e) => e.target.style.color = '#f3f4f6'}
             >
               Contact
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              className="transition-all duration-300 hover:scale-105"
-              style={{
-                fontSize: '1rem',
-                fontWeight: '600',
-                color: '#f3f4f6',
-                textDecoration: 'none'
-              }}
-              onMouseEnter={(e) => e.target.style.color = '#fb923c'}
-              onMouseLeave={(e) => e.target.style.color = '#f3f4f6'}
-            >
-              Projects
             </a>
           </li>
           <li>
@@ -201,7 +201,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="#projects"
+              href="#experience"
               onClick={closeMenu}
               className="block px-6 py-3 transition-all duration-300 hover:bg-gray-800/50"
               style={{
@@ -213,12 +213,12 @@ const Navbar = () => {
               onMouseEnter={(e) => e.target.style.color = '#fb923c'}
               onMouseLeave={(e) => e.target.style.color = '#fb923c'}
             >
-              Projects
+              Experience
             </a>
           </li>
           <li>
             <a
-              href="#resume"
+              href="#skills"
               onClick={closeMenu}
               className="block px-6 py-3 transition-all duration-300 hover:bg-gray-800/50"
               style={{
@@ -230,7 +230,24 @@ const Navbar = () => {
               onMouseEnter={(e) => e.target.style.color = '#fb923c'}
               onMouseLeave={(e) => e.target.style.color = '#f3f4f6'}
             >
-              Resume
+              Skills
+            </a>
+          </li>
+          <li>
+            <a
+              href="#projects"
+              onClick={closeMenu}
+              className="block px-6 py-3 transition-all duration-300 hover:bg-gray-800/50"
+              style={{
+                fontSize: '1rem',
+                fontWeight: '600',
+                color: '#f3f4f6',
+                textDecoration: 'none'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#fb923c'}
+              onMouseLeave={(e) => e.target.style.color = '#f3f4f6'}
+            >
+              Projects
             </a>
           </li>
           <li>
@@ -265,23 +282,6 @@ const Navbar = () => {
               onMouseLeave={(e) => e.target.style.color = '#f3f4f6'}
             >
               Blog
-            </a>
-          </li>
-          <li>
-            <a
-              href="#extra"
-              onClick={closeMenu}
-              className="block px-6 py-3 transition-all duration-300 hover:bg-gray-800/50"
-              style={{
-                fontSize: '1rem',
-                fontWeight: '600',
-                color: '#f3f4f6',
-                textDecoration: 'none'
-              }}
-              onMouseEnter={(e) => e.target.style.color = '#fb923c'}
-              onMouseLeave={(e) => e.target.style.color = '#f3f4f6'}
-            >
-              More
             </a>
           </li>
         </ul>
