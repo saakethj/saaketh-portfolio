@@ -5,6 +5,7 @@ import Experience from "./components/Experience";
 import SkillsSection from './components/SkillsSection';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import ProjectsSection from "./components/Projects";
+import ContactSection  from "./components/Contact";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Experience />
       <SkillsSection/>
       <ProjectsSection />
+      <ContactSection />
     </div>
   );
 }
