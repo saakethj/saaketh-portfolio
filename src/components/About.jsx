@@ -1,6 +1,7 @@
 import BlurText from './BlurText';
 import Carousel from './Carousel'; // Back to original
 import { motion } from 'framer-motion';
+import { TextGenerateEffect } from './TextGenerateEffect';
 
 const About = () => {
   const handleAnimationComplete = () => {
@@ -31,7 +32,7 @@ const About = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Header */}
+        {/* Header with Mobile-Friendly TextGenerateEffect */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,26 +40,35 @@ const About = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About{' '}
-            <motion.span
-              className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-              animate={{
-                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{
-                backgroundSize: '200% 200%'
-              }}
-            >
-              Me
-            </motion.span>
-          </h2>
-          <p className="text-white/60 max-w-2xl mx-auto text-lg">
+          <div className="text-4xl md:text-5xl font-bold mb-4">
+            <div className="flex flex-wrap justify-center items-baseline gap-2 md:gap-3">
+              <TextGenerateEffect 
+                words="About"
+                className="text-center"
+                filter={true}
+                duration={0.8}
+              />
+              <motion.span
+                className="bg-gradient-to-r from-orange-400 via-pink-500 to-red-500 bg-clip-text text-transparent inline-block"
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                }}
+                style={{
+                  backgroundSize: '200% 200%',
+                  animationDuration: '4s',
+                  animationIterationCount: 'infinite',
+                  animationTimingFunction: 'ease-in-out'
+                }}
+              >
+                Me
+              </motion.span>
+            </div>
+          </div>
+          <p className="text-white/60 max-w-2xl mx-auto text-lg px-4">
             Get to know the person behind the code
           </p>
         </motion.div>
