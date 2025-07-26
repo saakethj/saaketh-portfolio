@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import ProjectsSection from "./components/Projects";
 import ContactSection  from "./components/Contact";
 import BlogSection from "./components/blog";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <SkillsSection/>
       <ProjectsSection />
       <ContactSection />
+      <Footer />
     </div>
   );
 }
