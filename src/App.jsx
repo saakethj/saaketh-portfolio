@@ -6,6 +6,7 @@ import SkillsSection from './components/SkillsSection';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import ProjectsSection from "./components/Projects";
 import ContactSection  from "./components/Contact";
+import BlogSection from "./components/blog";
 
 function App() {
   return (
