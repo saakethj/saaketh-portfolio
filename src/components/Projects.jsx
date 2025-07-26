@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LightRays from './LightRays'; // Import the LightRays component
 import {
     FiCode,
     FiExternalLink,
@@ -225,44 +226,95 @@ const ProjectsSection = () => {
             className="relative bg-black text-white py-20 px-6 md:px-12 lg:px-20 w-full overflow-hidden"
             style={{ fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }}
         >
-            {/* Background that blends with skills section */}
-            <div className="absolute inset-0 overflow-hidden">
-                {/* Gradient continuation from skills section */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/5 to-transparent" />
+            {/* Light Rays Background - Positioned behind everything */}
+            <div className="absolute inset-0 z-0">
+                <LightRays
+                    raysOrigin="right"
+                    raysColor="#f0abfc" // Purple color matching your theme
+                    raysSpeed={1.0} // Slower, more elegant speed
+                    lightSpread={1.5} // Wide spread for subtle effect
+                    rayLength={1.8} // Extended length
+                    pulsating={false} // No pulsating for professional look
+                    fadeDistance={1.5} // Smooth fade
+                    saturation={0.8} // Slightly desaturated
+                    followMouse={true} // Interactive mouse following
+                    mouseInfluence={0.15} // Subtle mouse influence
+                    noiseAmount={0.08} // Very light noise for texture
+                    distortion={0.03} // Minimal distortion
+                    className="custom-rays" // Low opacity to not overpower content
+                />
+            </div>
 
-                {/* Subtle tech grid pattern */}
+            <div className="absolute inset-0 z-0">
+                <LightRays
+                    raysOrigin="left"
+                    raysColor="#fb923c" // Purple color matching your theme
+                    raysSpeed={1.0} // Slower, more elegant speed
+                    lightSpread={1.5} // Wide spread for subtle effect
+                    rayLength={1.5} // Extended length
+                    pulsating={false} // No pulsating for professional look
+                    fadeDistance={1.5} // Smooth fade
+                    saturation={0.5} // Slightly desaturated
+                    followMouse={true} // Interactive mouse following
+                    mouseInfluence={0.15} // Subtle mouse influence
+                    noiseAmount={0.08} // Very light noise for texture
+                    distortion={0.03} // Minimal distortion
+                    className="custom-rays" // Low opacity to not overpower content
+                />
+            </div>
+
+            {/* Enhanced Background Overlay */}
+            <div className="absolute inset-0 z-[1] overflow-hidden">
+                {/* Gradient continuation from skills section */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/80" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/10 to-transparent" />
+
+                {/* Enhanced tech grid pattern */}
                 <motion.div
                     className="absolute inset-0"
-                    animate={{ opacity: [0.03, 0.08, 0.03] }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+                    animate={{ opacity: [0.02, 0.06, 0.02] }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
                     style={{
                         backgroundImage: `
-              linear-gradient(rgba(139,92,246,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(16,185,129,0.08) 1px, transparent 1px)
+              linear-gradient(rgba(139,92,246,0.08) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(16,185,129,0.06) 1px, transparent 1px)
             `,
-                        backgroundSize: '100px 100px'
+                        backgroundSize: '120px 120px'
                     }}
                 />
 
-                {/* Floating particles for continuity */}
+                {/* Dynamic color-changing particles */}
                 <motion.div
-                    className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-purple-400/30"
+                    className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full"
+                    style={{ backgroundColor: activeProject.color }}
                     animate={{
-                        x: [0, 100, -50, 0],
-                        y: [0, -80, 60, 0],
-                        opacity: [0, 0.6, 0.3, 0],
+                        x: [0, 120, -60, 0],
+                        y: [0, -100, 80, 0],
+                        opacity: [0, 0.4, 0.2, 0],
+                        scale: [0.5, 1.2, 0.8, 0.5],
                     }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div
-                    className="absolute top-3/4 right-1/3 w-1.5 h-1.5 rounded-full bg-emerald-400/40"
+                    className="absolute top-3/4 right-1/3 w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: activeProject.color, opacity: 0.3 }}
                     animate={{
-                        x: [0, -80, 40, 0],
-                        y: [0, 50, -30, 0],
-                        opacity: [0, 0.8, 0.2, 0],
+                        x: [0, -100, 60, 0],
+                        y: [0, 60, -40, 0],
+                        opacity: [0, 0.6, 0.1, 0],
+                        scale: [0.3, 1, 0.6, 0.3],
                     }}
-                    transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 8 }}
+                />
+                <motion.div
+                    className="absolute top-1/2 right-1/4 w-1 h-1 rounded-full"
+                    style={{ backgroundColor: '#10b981', opacity: 0.25 }}
+                    animate={{
+                        x: [0, 80, -120, 0],
+                        y: [0, -70, 40, 0],
+                        opacity: [0, 0.5, 0.15, 0],
+                    }}
+                    transition={{ duration: 35, repeat: Infinity, ease: "easeInOut", delay: 15 }}
                 />
             </div>
 
@@ -326,7 +378,7 @@ const ProjectsSection = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
                                     transition={{ duration: 0.3 }}
-                                    className="bg-white/5 rounded-xl p-6 border border-white/10"
+                                    className="bg-white/5 rounded-xl p-6 border border-white/10 backdrop-blur-sm"
                                 >
                                     <div className="mb-6">
                                         <div className="flex items-center gap-3 mb-4">
