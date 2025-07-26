@@ -66,7 +66,7 @@ const About = () => {
         {/* Main Content */}
         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-start justify-between gap-12">
 
-          {/* Left Side - Blur Text - Aligned with Hero text */}
+          {/* Left Side - Clean Highlighted Bio Text with Gradients */}
           <motion.div
             className="lg:w-1/2 w-full flex flex-col justify-start"
             initial={{ opacity: 0, x: -30 }}
@@ -74,23 +74,27 @@ const About = () => {
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8 }}
           >
-            <BlurText
-              text={`Hi, I'm Saaketh, a passionate Software Engineer currently working at BNP Paribas India Solutions, where I specialize in financial automation and reconciliation tools.`}
-              delay={15}
-              animateBy="words"
-              direction="top"
-              onAnimationComplete={handleAnimationComplete}
-              className="text-lg md:text-xl leading-relaxed font-semibold font-[Inter,sans-serif] text-gray-200 mb-6"
-            />
+            {/* First Paragraph with BNP Paribas Gradient */}
+            <div className="text-lg md:text-xl leading-relaxed font-semibold font-[Inter,sans-serif] text-gray-200 mb-6">
+              <span>Hi, I'm Saaketh, a passionate Software Engineer currently working at </span>
+              <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent font-bold">
+                BNP Paribas India Solutions
+              </span>
+              <span>, where I specialize in financial automation and reconciliation tools.</span>
+            </div>
 
-            <BlurText
-              text={`I enjoy translating business needs into technical solutions. With a strong foundation in Python, SQL, and automation, I bring efficiency and precision to workflows while always exploring new tools in DevOps and CI/CD.`}
-              delay={15}
-              animateBy="words"
-              direction="top"
-              onAnimationComplete={handleAnimationComplete}
-              className="text-lg md:text-xl leading-relaxed font-medium font-[Inter,sans-serif] text-gray-200 mb-6"
-            />
+            {/* Second Paragraph with Python/SQL and DevOps Gradients */}
+            <div className="text-lg md:text-xl leading-relaxed font-medium font-[Inter,sans-serif] text-gray-200 mb-6">
+              <span>I enjoy translating business needs into technical solutions. With a strong foundation in </span>
+              <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500 bg-clip-text text-transparent font-bold">
+                Python, SQL
+              </span>
+              <span>, and automation, I bring efficiency and precision to workflows while always exploring new tools in </span>
+              <span className="bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent font-bold">
+                DevOps
+              </span>
+              <span> and CI/CD.</span>
+            </div>
           </motion.div>
 
           {/* Right Side - Carousel with fixed responsive width */}
