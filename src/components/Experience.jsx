@@ -69,6 +69,8 @@ const Experience = () => {
   const [scrollDirection, setScrollDirection] = useState('down');
   const [isMobile, setIsMobile] = useState(false);
   const isScrollingRef = useRef(false);
+  const touchStartYRef = useRef(0);
+
 
   // Mobile detection
   useEffect(() => {
@@ -106,7 +108,28 @@ const Experience = () => {
       e.preventDefault();
 
       isScrollingRef.current = true;
-      const delta = e.deltaY || e.touches?.[0]?.clientY || 0;
+      let delta = 0;
+
+      if (e.type === 'wheel') {
+        delta = e.deltaY;
+      } else if (e.type === 'touchmove') {
+        const currentY = e.touches[0].clientY;
+        delta = touchStartYRef.current - currentY;
+
+        const scrollDown = delta > 0;
+        const touchZone = e.touches[0].target.getBoundingClientRect();
+        const screenHeight = window.innerHeight;
+
+        if (
+          currentIndex === experiences.length - 1 &&
+          scrollDown &&
+          touchZone.bottom > screenHeight - 100
+        ) {
+          setIsInExperience(false);
+          document.body.style.overflow = 'auto';
+          return;
+        }
+      }
 
       const scrollDown = delta > 0;
       setScrollDirection(scrollDown ? 'down' : 'up');
@@ -137,13 +160,19 @@ const Experience = () => {
 
       setTimeout(() => {
         isScrollingRef.current = false;
-      }, 700); // Adjust for scroll pacing
+      }, 700);
+    };
+
+    // ✅ define outside of handleScroll
+    const handleTouchStart = (e) => {
+      touchStartYRef.current = e.touches[0].clientY;
     };
 
     if (isInExperience) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('wheel', handleScroll, { passive: false });
       window.addEventListener('touchmove', handleScroll, { passive: false });
+      window.addEventListener('touchstart', handleTouchStart, { passive: true }); // ✅ added correctly
     } else {
       document.body.style.overflow = 'auto';
     }
@@ -151,9 +180,11 @@ const Experience = () => {
     return () => {
       window.removeEventListener('wheel', handleScroll);
       window.removeEventListener('touchmove', handleScroll);
+      window.removeEventListener('touchstart', handleTouchStart); // ✅ cleanup
       document.body.style.overflow = 'auto';
     };
   }, [isInExperience, currentIndex, canExitSection]);
+
 
   // Entry detection
   useEffect(() => {
