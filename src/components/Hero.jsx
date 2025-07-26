@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import TextType from "./TextType";
 import Aurora from "./Aurora";
 import GradientText from "./GradientText";
+import { HoverBorderGradient } from './HoverBorderGradient'; // Adjust path as needed
 
 
 
@@ -33,10 +34,10 @@ const Hero = () => {
         >
             {/* Aurora Background */}
             <Aurora
-                colorStops={["#1a1a40", "#ff6a00", "#ffb347"]}
+                colorStops={["#1a1a40", "#ff6a00", "#1a1a40"]}
                 blend={0.4}
-                amplitude={1.2}
-                speed={0.5}
+                amplitude={0.8}
+                speed={0.4}
             />
             {/* Minimal animated glow background */}
             <motion.div
@@ -93,30 +94,40 @@ const Hero = () => {
                         Proficient in SQL & Python. Enthusiastic about CI/CD and DevOps tools.
                     </p>
 
-                    {/* Buttons */}
-                    <div className="flex gap-4 mt-8" style={{ fontFamily: "Inter, sans-serif" }}>
-                        <a
+                    {/* Aceternity UI Animated Buttons */}
+                    <div className="flex flex-col sm:flex-row gap-6 mt-8">
+                        <HoverBorderGradient
+                            as="a"
                             href="#contact"
-                            className="px-6 py-3 border-2 border-blue-500 text-blue-400 font-medium rounded-lg hover:bg-blue-500/20 hover:text-blue-300 hover:border-blue-400 transition duration-300 shadow-lg hover:shadow-blue-500/25"
+                            containerClassName="rounded-full"
+                            className="bg-black/80 backdrop-blur-sm font-semibold px-8 py-4"
                             style={{ 
-                                fontFamily: "Inter, sans-serif", 
-                                fontWeight: 500,
-                                textDecoration: 'none'
+                                fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", 
+                                fontWeight: 600,
+                                textDecoration: 'none',
+                                color: '#ec4899' // Vibrant magenta/pink
                             }}
+                            duration={2}
                         >
                             Get In Touch
-                        </a>
-                        <a
+                        </HoverBorderGradient>
+                        
+                        <HoverBorderGradient
+                            as="a"
                             href="#projects"
-                            className="px-6 py-3 border-2 border-orange-500 text-orange-400 font-medium rounded-lg hover:bg-orange-500/20 hover:text-orange-300 hover:border-orange-400 transition duration-300 shadow-lg hover:shadow-orange-500/25"
+                            containerClassName="rounded-full"
+                            className="bg-black/80 backdrop-blur-sm font-semibold px-8 py-4"
                             style={{ 
-                                fontFamily: "Inter, sans-serif", 
-                                fontWeight: 500,
-                                textDecoration: 'none'
+                                fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", 
+                                fontWeight: 600,
+                                textDecoration: 'none',
+                                color: '#8b5cf6' // Vibrant purple
                             }}
+                            duration={2}
+                            clockwise={false}
                         >
                             View My Work
-                        </a>
+                        </HoverBorderGradient>
                     </div>
 
                 </motion.div>
@@ -130,7 +141,7 @@ const Hero = () => {
                 >
                     <div className="relative">
                         <img
-                            src={`${import.meta.env.BASE_URL}Saaketh_profile_pic.jpg`}
+                            src={`${import.meta.env.BASE_URL}/images/Saaketh_profile_pic.webp`}
                             alt="Saaketh"
                             className="w-80 h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] object-cover object-center shadow-2xl rounded-full"
                             style={{
