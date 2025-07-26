@@ -20,6 +20,7 @@ function App() {
       <SkillsSection/>
       <ProjectsSection />
       <ContactSection />
+      <BlogSection />
       <Footer />
     </div>
   );
