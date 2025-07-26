@@ -29,7 +29,7 @@ const Hero = () => {
     return (
         <section
             id="home"
-            className="relative bg-black text-white mt-[64px] py-12 md:py-20 w-full overflow-hidden"
+            className="relative bg-black text-white pt-24 md:pt-32 py-12 md:py-20 w-full overflow-hidden"
         >
             {/* Aurora Background */}
             <Aurora
