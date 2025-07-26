@@ -64,7 +64,7 @@ const ExperienceAnimatedBackground = ({ className = "" }) => {
       className="absolute w-1 h-1 rounded-full"
       style={{ left: x, top: y }}
       initial={{ opacity: 0.1, scale: 0.5 }}
-      animate={{ 
+      animate={{
         opacity: [0.1, 0.4, 0.1],
         scale: [0.5, 1.2, 0.5]
       }}
@@ -95,11 +95,11 @@ const ExperienceAnimatedBackground = ({ className = "" }) => {
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
       {/* Base black background */}
       <div className="absolute inset-0 bg-black" />
-      
+
       {/* Gradient that transitions from black at top/bottom to magenta in middle */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-900/12 to-black" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-600/6 to-transparent" />
-      
+
       {/* Center magenta glow - reduced intensity */}
       <motion.div
         className="absolute inset-0"
@@ -131,7 +131,7 @@ const ExperienceAnimatedBackground = ({ className = "" }) => {
         }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
-      
+
       <motion.div
         className="absolute right-1/4 top-0 w-px h-full opacity-12"
         animate={{
@@ -166,7 +166,7 @@ const ExperienceAnimatedBackground = ({ className = "" }) => {
       ))}
 
       {/* Subtle noise texture overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-20 mix-blend-soft-light"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
