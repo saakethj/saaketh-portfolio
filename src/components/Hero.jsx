@@ -88,9 +88,9 @@ const Hero = () => {
                     </div>
 
                     <p className="text-gray-300 text-sm md:text-base leading-relaxed max-w-lg font-medium"
-                       style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, letterSpacing: "0.025em" }}>
-                        Software Engineer at BNP Paribas with over 2 years of experience 
-                        specializing in reconciliation workflows using IntelliMatch. 
+                        style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, letterSpacing: "0.025em" }}>
+                        Software Engineer at BNP Paribas with over 2 years of experience
+                        specializing in reconciliation workflows using IntelliMatch.
                         Proficient in SQL & Python. Enthusiastic about CI/CD and DevOps tools.
                     </p>
 
@@ -101,8 +101,8 @@ const Hero = () => {
                             href="#contact"
                             containerClassName="rounded-full"
                             className="bg-black/80 backdrop-blur-sm font-semibold px-8 py-4"
-                            style={{ 
-                                fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", 
+                            style={{
+                                fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
                                 fontWeight: 600,
                                 textDecoration: 'none',
                                 color: '#ec4899' // Vibrant magenta/pink
@@ -111,14 +111,14 @@ const Hero = () => {
                         >
                             Get In Touch
                         </HoverBorderGradient>
-                        
+
                         <HoverBorderGradient
                             as="a"
                             href="#projects"
                             containerClassName="rounded-full"
                             className="bg-black/80 backdrop-blur-sm font-semibold px-8 py-4"
-                            style={{ 
-                                fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif", 
+                            style={{
+                                fontFamily: "'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
                                 fontWeight: 600,
                                 textDecoration: 'none',
                                 color: '#8b5cf6' // Vibrant purple
