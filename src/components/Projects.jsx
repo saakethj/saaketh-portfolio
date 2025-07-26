@@ -22,11 +22,11 @@ const projectsData = [
         id: 1,
         title: "Apparel Classifier",
         category: "Machine Learning",
-        period: "Jan 2022 - May 2022",
+        period: "Jan 2021 - May 2021",
         status: "Completed",
         type: "Academic",
-        description: "A deep learning project focused on clothing recognition using computer vision techniques. Built a custom CNN architecture to classify different types of apparel with high accuracy.",
-        longDescription: "This project involved creating an intelligent system capable of recognizing and classifying various clothing items from images. The model was trained on a diverse dataset and achieved impressive accuracy through careful preprocessing and architecture optimization.",
+        description: "Apparel Classifier is a neural network model that classifies grayscale images of size (28X28)pixels and provides which category of clothing like shirts, T-shirts, Handbags e.tc. This model uses fasion dataset collected from various sources containing images of clothing('Footwear', 'Handbags', 'Shirts', 'T-shirts'). Te dataset has a total o 10,714 images in total.",
+        longDescription: "Apparel Classifier is a neural network model that classifies grayscale images of size (28X28)pixels and provides which category of clothing like shirts, T-shirts, Handbags e.tc. This model uses fasion dataset collected from various sources containing images of clothing('Footwear', 'Handbags', 'Shirts', 'T-shirts'). Te dataset has a total o 10,714 images in total",
         technologies: ["Python", "TensorFlow", "OpenCV", "Pandas", "NumPy", "Matplotlib"],
         skills: [
             { name: "Python", level: 90 },
@@ -35,15 +35,15 @@ const projectsData = [
             { name: "Data Science", level: 85 }
         ],
         achievements: [
-            "94% classification accuracy achieved",
+            "85% classification accuracy achieved",
             "Real-time image processing capability",
             "Custom CNN architecture design",
             "Comprehensive data preprocessing pipeline"
         ],
         links: {
-            github: "#",
-            demo: "#",
-            documentation: "#"
+            github: "https://github.com/saakethj/Apparel-Classifier/tree/master",
+            demo: "https://github.com/saakethj/Apparel-Classifier/tree/master",
+            documentation: "https://github.com/saakethj/Apparel-Classifier/blob/master/README.md"
         },
         color: "#8b5cf6", // Purple theme for ML
         gradient: "from-purple-500 to-violet-600"
@@ -52,17 +52,16 @@ const projectsData = [
         id: 2,
         title: "Medical Store Management",
         category: "Full Stack Development",
-        period: "Jun 2022 - Dec 2022",
+        period: "Mar 2022 - May 2022",
         status: "Completed",
         type: "Academic",
         description: "A comprehensive web application for pharmacy inventory management and billing system. Features real-time inventory tracking, automated billing, and customer management.",
-        longDescription: "This full-stack application streamlines pharmacy operations with an intuitive interface for managing inventory, processing sales, and maintaining customer records. Built with modern web technologies and responsive design principles.",
-        technologies: ["React.js", "Node.js", "MongoDB", "Express", "JWT", "CSS3"],
+        longDescription: "Medical is a dekstop application created using java and java swing packages. It lets users to enter medicine details. Admin can add, update & delete details of a particular medicine. If a medicine is being billed. It shows the medicine details and the price everything.",
+        technologies: ["Jaba", "Spring Boot", "Swing Package", "SQL"],
         skills: [
-            { name: "React.js", level: 88 },
-            { name: "Node.js", level: 82 },
-            { name: "MongoDB", level: 85 },
-            { name: "API Development", level: 80 }
+            { name: "Java", level: 88 },
+            { name: "Spring Boot", level: 82 },
+            { name: "Swing Package", level: 85 },
         ],
         achievements: [
             "Complete CRUD operations implementation",
@@ -71,9 +70,9 @@ const projectsData = [
             "Responsive design for all devices"
         ],
         links: {
-            github: "#",
-            demo: "#",
-            documentation: "#"
+            github: "https://github.com/saakethj/Medical-store",
+            demo: "https://github.com/saakethj/Medical-store",
+            documentation: "https://github.com/saakethj/Medical-store"
         },
         color: "#10b981", // Green theme for healthcare
         gradient: "from-emerald-500 to-teal-600"
@@ -82,16 +81,16 @@ const projectsData = [
         id: 3,
         title: "Reconciliation Tool Migration",
         category: "FinTech Development",
-        period: "Jul 2023 - Present",
-        status: "In Progress",
+        period: "Feb 2025 - Jun 2025",
+        status: "In Production",
         type: "Professional",
         description: "Leading the migration of legacy reconciliation tools to IntelliMatch platform at BNP Paribas. Handling complex financial data processing and automation workflows.",
-        longDescription: "This professional project involves modernizing critical financial reconciliation processes, ensuring data integrity, and improving operational efficiency through advanced automation techniques and robust error handling mechanisms.",
+        longDescription: "Woeked as a software developer in deploying cash and trade reocniliation migration from legacy system to IntelliMatch. Developed and implemented automated reconciliation workflows, ensuring data integrity and compliance with financial regulations.",
         technologies: ["Python", "SQL", "IntelliMatch", "AutoSys", "SWIFT", "Batch Processing"],
         skills: [
             { name: "Python", level: 92 },
             { name: "SQL", level: 88 },
-            { name: "FinTech Tools", level: 85 },
+            { name: "IntelliMatch", level: 85 },
             { name: "Data Migration", level: 90 }
         ],
         achievements: [
@@ -103,9 +102,40 @@ const projectsData = [
         links: {
             github: null, // Private/Professional
             demo: null,
-            documentation: "#"
+            documentation: null
         },
         color: "#f59e0b", // Amber theme for fintech
+        gradient: "from-amber-500 to-orange-600"
+    },
+    {
+        id: 4,
+        title: "GameVault",
+        category: "Personal Project",
+        period: "Apr 2025 - May 2025",
+        status: "In Development",
+        type: " Personal",
+        description: "My personal dashbaord created to view my gaming stats and achievements. It is a web application that allows users to track their gaming progress, achievements, and statistics across multiple platforms.",
+        longDescription: "My personal dashbaord created to view my gaming stats and achievements. It is a web application that allows users to track their gaming progress, achievements, and statistics across multiple platforms.",
+        technologies: ["Python", "SQL", "IntelliMatch", "AutoSys", "SWIFT", "Batch Processing"],
+        skills: [
+            { name: "Python", level: 92 },
+            { name: "SQL", level: 88 },
+            { name: "Tailwind CSS", level: 85 },
+            { name: "React JS", level: 90 },
+            { name: "Prsima", level: 80 }
+        ],
+        achievements: [
+            "Creating a personal dashboard",
+            "Integrated front end with React and Tailwind CSS",
+            "Wesbite is interacted with Database to store game stats, user etc details",
+            "Implemented user authentication and profile management",
+        ],
+        links: {
+            github: "https://github.com/saakethj/gamevault-v2", // Private/Professional
+            demo: null,
+            documentation: "https://github.com/saakethj/gamevault-v2/blob/main/README.md"
+        },
+        color: "#ff00ff", // Amber theme for fintech
         gradient: "from-amber-500 to-orange-600"
     }
 ];
@@ -199,8 +229,8 @@ const ProjectsSection = () => {
     const ProjectNavItem = ({ project, isActive, onClick }) => (
         <motion.div
             className={`cursor-pointer p-4 rounded-lg transition-all duration-300 border ${isActive
-                    ? 'bg-white/10 border-white/20 shadow-lg'
-                    : 'bg-white/5 border-white/10 hover:bg-white/8 hover:border-white/15'
+                ? 'bg-white/10 border-white/20 shadow-lg'
+                : 'bg-white/5 border-white/10 hover:bg-white/8 hover:border-white/15'
                 }`}
             onClick={onClick}
             whileHover={{ scale: 1.02 }}
