@@ -11,7 +11,7 @@ export const TextGenerateEffect = ({
 }) => {
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
-  
+
   useEffect(() => {
     animate("span", {
       opacity: 1,
@@ -21,7 +21,7 @@ export const TextGenerateEffect = ({
       delay: stagger(0.2),
     });
   }, [scope.current, animate, filter, duration]);
-  
+
   const renderWords = () => {
     return (
       <motion.div ref={scope}>
@@ -40,7 +40,7 @@ export const TextGenerateEffect = ({
       </motion.div>
     );
   };
-  
+
   return (
     <div className={cn("font-bold", className)}>
       <div className="mt-4">
