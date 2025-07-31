@@ -8,11 +8,13 @@ import ProjectsSection from "./components/Projects";
 import ContactSection  from "./components/Contact";
 import BlogSection from "./components/blog";
 import Footer from "./components/Footer";
+import { ScrollProgress } from "./components/ScrollProgress";
 
 function App() {
   return (
     <div className="min-h-screen w-screen overflow-x-hidden bg-black text-white">
       <SpeedInsights />
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <AboutText />
