@@ -116,13 +116,12 @@ const projectsData = [
         type: " Personal",
         description: "My personal dashbaord created to view my gaming stats and achievements. It is a web application that allows users to track their gaming progress, achievements, and statistics across multiple platforms.",
         longDescription: "My personal dashbaord created to view my gaming stats and achievements. It is a web application that allows users to track their gaming progress, achievements, and statistics across multiple platforms.",
-        technologies: ["Python", "SQL", "IntelliMatch", "AutoSys", "SWIFT", "Batch Processing"],
+        technologies: ["React", "FireBase", "Tailwind CSS", "Vite"],
         skills: [
-            { name: "Python", level: 92 },
-            { name: "SQL", level: 88 },
+            { name: "React", level: 92 },
             { name: "Tailwind CSS", level: 85 },
             { name: "React JS", level: 90 },
-            { name: "Prsima", level: 80 }
+            { name: "Firebase", level: 80 }
         ],
         achievements: [
             "Creating a personal dashboard",

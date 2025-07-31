@@ -25,7 +25,7 @@ const Footer = () => {
         { icon: FiTwitter, href: "https://twitter.com/SaakethJ", label: "Twitter", color: "#1da1f2" },
         { icon: FiInstagram, href: "https://instagram.com/saaketh_jella01", label: "Instagram", color: "#e4405f" },
         { icon: FiMail, href: "mailto:saaketh.jella123@gmail.com", label: "Email", color: "#ea4335" },
-        { icon: FiCode, href: "https://codepen.io/saakethj", label: "CodePen", color: "#000000" },
+        { icon: FiCode, href: "https://codepen.io/saakethj-the-styleful", label: "CodePen", color: "#000000" },
         { icon: FiExternalLink, href: "https://dev.to/saakethj", label: "Dev.to", color: "#0a0a0a" },
         { icon: FiSend, href: "https://telegram.me/saakethj", label: "Telegram", color: "#0088cc" }
     ];
@@ -90,7 +90,7 @@ const Footer = () => {
                                     JELLA Saaketh
                                 </h3>
                                 <div className="mt-2">
-                                    <p className="text-sm text-blue-400/80">Full Stack Developer</p>
+                                    <p className="text-m text-pink-400/80">Software Engineer</p>
                                 </div>
                             </div>
                             <p className="text-white/70 leading-relaxed mb-6 max-w-md">

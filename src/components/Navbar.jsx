@@ -53,7 +53,7 @@ const Navbar = () => {
           
           {/* Logo/Name with animated gradient */}
           <a 
-            href="/saaketh-portfolio"
+            href="https://www.saakethj.in/"
             className="tracking-wide relative z-10 transition-all duration-300 hover:scale-105"
             style={{
               fontSize: '1.75rem',
@@ -90,7 +90,7 @@ const Navbar = () => {
                 >
                   {item}
                   {/* Animated underline */}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-300 to-blue-400 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
                   {/* Hover glow effect */}
                   <span className="absolute inset-0 bg-cyan-300/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-sm"></span>
                 </a>
@@ -101,7 +101,7 @@ const Navbar = () => {
           {/* Hamburger Menu Button with glass effect */}
           <button
             onClick={toggleMenu}
-            className="md:hidden relative flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl transition-all duration-300 hover:bg-cyan-300/20"
+            className="md:hidden relative flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none backdrop-blur-xl bg-white/10 border border-white/20 rounded-xl transition-all duration-300 hover:bg-purple-400/20"
             aria-label="Toggle menu"
           >
             <span
@@ -162,7 +162,7 @@ const Navbar = () => {
                 <a
                   href={`#${item.toLowerCase()}`}
                   onClick={closeMenu}
-                  className="block px-6 py-4 transition-all duration-300 hover:bg-cyan-300/10 border-b border-white/10 last:border-b-0 group"
+                  className="block px-6 py-4 transition-all duration-300 hover:bg-purple-400/10 border-b border-white/10 last:border-b-0 group"
                   style={{
                     fontSize: '1rem',
                     fontWeight: '600',

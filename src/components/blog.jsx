@@ -6,6 +6,7 @@ import {
   FiArrowRight,
   FiBookOpen
 } from 'react-icons/fi';
+import { AnimatedCard } from './AnimatedCard'; // Import the animated card
 
 const BlogSection = () => {
   // DevOps and Trending Tech blog posts
@@ -43,102 +44,79 @@ const BlogSection = () => {
   ];
 
   const BlogCard = ({ post, index }) => (
-    <motion.article
+    <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.2 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className={`bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-300 group cursor-pointer ${
-        post.featured ? 'lg:col-span-2' : ''
-      }`}
-      style={{
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 100%)',
-        backdropFilter: 'blur(20px)',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1)'
-      }}
-      whileHover={{ 
-        y: -5, 
-        scale: 1.02,
-        boxShadow: '0 12px 40px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2)'
-      }}
+      className={post.featured ? 'lg:col-span-2' : ''}
     >
-      {/* Featured Badge */}
-      {post.featured && (
-        <div className="absolute top-4 left-4 z-10">
-          <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full text-xs font-semibold text-white">
-            Featured
-          </span>
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="p-6">
-        {/* Category & Meta */}
-        <div className="flex items-center justify-between mb-4">
-          <span 
-            className="px-3 py-1 rounded-full text-xs font-medium border"
-            style={{ 
-              backgroundColor: `${post.color}20`,
-              borderColor: `${post.color}40`,
-              color: post.color 
-            }}
-          >
-            {post.category}
-          </span>
-          <div className="flex items-center gap-4 text-white/60 text-sm">
-            <div className="flex items-center gap-1">
-              <FiCalendar className="w-3 h-3" />
-              {post.date}
-            </div>
-            <div className="flex items-center gap-1">
-              <FiClock className="w-3 h-3" />
-              {post.readTime}
-            </div>
-          </div>
-        </div>
-
-        {/* Title */}
-        <h3 className={`font-bold text-white mb-3 transition-all duration-300 ${
-          post.featured ? 'text-2xl md:text-3xl' : 'text-xl'
-        }`}>
-          {post.title}
-        </h3>
-
-        {/* Excerpt */}
-        <p className={`text-white/70 mb-4 leading-relaxed ${
-          post.featured ? 'text-base md:text-lg' : 'text-sm'
-        }`}>
-          {post.excerpt}
-        </p>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {post.tags.slice(0, post.featured ? 4 : 3).map((tag, index) => (
+      <AnimatedCard
+        title={post.title}
+        description={post.excerpt}
+        withArrow={true}
+        circleSize={350}
+        className="min-h-[160px]" // Fixed height for consistency
+        onClick={() => {
+          // Handle blog post click - you can add navigation logic here
+          console.log(`Clicked on blog post: ${post.title}`);
+        }}
+      >
+        {/* Custom content inside the card - Meta info only */}
+        <div className="p-3 h-full flex flex-col justify-between">
+          {/* Category & Meta - Top */}
+          <div className="flex items-center justify-between mb-2">
             <span 
-              key={index}
-              className="px-2 py-1 bg-white/10 rounded-md text-xs text-white/80 hover:bg-white/20 transition-colors duration-200"
+              className="px-2 py-1 rounded-full text-xs font-medium border"
+              style={{ 
+                backgroundColor: `${post.color}20`,
+                borderColor: `${post.color}40`,
+                color: post.color 
+              }}
             >
-              #{tag}
+              {post.category}
             </span>
-          ))}
-        </div>
+            <div className="flex items-center gap-3 text-neutral-600 dark:text-neutral-400 text-xs">
+              <div className="flex items-center gap-1">
+                <FiCalendar className="w-3 h-3" />
+                {post.date}
+              </div>
+              <div className="flex items-center gap-1">
+                <FiClock className="w-3 h-3" />
+                {post.readTime}
+              </div>
+            </div>
+          </div>
 
-        {/* Read More */}
-        <div className="flex items-center justify-between">
-          <motion.button
-            className="flex items-center gap-2 text-white/80 hover:text-white font-medium group-hover:gap-3 transition-all duration-300"
-            whileHover={{ x: 5 }}
-          >
-            Read More
-            <FiArrowRight className="w-4 h-4" />
-          </motion.button>
-          <div className="flex items-center gap-2 text-white/60">
-            <FiBookOpen className="w-4 h-4" />
-            <span className="text-sm">Technical</span>
+          {/* Tags - Bottom */}
+          <div className="flex flex-wrap gap-1 mb-2">
+            {post.tags.slice(0, 3).map((tag, tagIndex) => (
+              <span 
+                key={tagIndex}
+                className="px-2 py-1 bg-neutral-200/50 dark:bg-neutral-700/50 rounded-md text-xs text-neutral-700 dark:text-neutral-300"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Bottom section */}
+          <div className="flex items-center justify-between mt-auto">
+            <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
+              <FiBookOpen className="w-4 h-4" />
+              <span className="text-sm">Technical</span>
+            </div>
+            <motion.div
+              className="flex items-center gap-1 text-neutral-700 dark:text-neutral-300 text-sm font-medium"
+              whileHover={{ x: 3 }}
+            >
+              Read More
+              <FiArrowRight className="w-3 h-3" />
+            </motion.div>
           </div>
         </div>
-      </div>
-    </motion.article>
+      </AnimatedCard>
+    </motion.div>
   );
 
   return (
